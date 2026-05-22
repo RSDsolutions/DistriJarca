@@ -1,4 +1,4 @@
-import { MapPin, PackageCheck, Route, Timer } from "lucide-react";
+import { MapPin, PackageCheck, Route, Timer, Truck } from "lucide-react";
 import { generateWhatsAppLink } from "../utils";
 
 export default function Distribution() {
