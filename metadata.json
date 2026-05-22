@@ -1,0 +1,6 @@
+{
+  "name": "Distri-Jarca",
+  "description": "Appetizing website for a wholesale food distribution company. Features catalog and WhatsApp ordering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-nunito: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary-yellow: #F5B52E;
+  --color-primary-yellow-dark: #D4940A;
+  --color-primary-yellow-light: #FFF0CC;
+  --color-primary-yellow-vlight: #FFF8E7;
+
+  --color-secondary-red: #E53935;
+  --color-secondary-red-hover: #C62828;
+  --color-secondary-red-light: #FFF0EE;
+  --color-secondary-red-glow: rgba(229,57,53,0.2);
+
+  --color-navy: #0B3A66;
+  --color-navy-mid: #0E4A80;
+  --color-navy-border: #1A5A9A;
+  --color-navy-light: #A0BDD8;
+
+  --color-accent-orange: #FF8A30;
+  --color-accent-orange-hover: #E06A10;
+
+  --color-neutral-cream: #FFF8E7;
+  --color-neutral-white: #FFFFFF;
+  --color-neutral-lightgray: #F7F7F7;
+  --color-neutral-dark: #1A1A1A;
+  --color-neutral-muted: #6B6B6B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .bg-hero-gradient {
+    background-image: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-mid) 50%, #0A2A50 100%);
+  }
+  .bg-yellow-gradient {
+    background-image: linear-gradient(135deg, var(--color-primary-yellow), var(--color-primary-yellow-dark));
+  }
+  .bg-red-gradient {
+    background-image: linear-gradient(135deg, var(--color-secondary-red), var(--color-secondary-red-hover));
+  }
+  .bg-orange-gradient {
+    background-image: linear-gradient(135deg, var(--color-accent-orange), var(--color-accent-orange-hover));
+  }
+  .bg-promo-gradient {
+    background-image: linear-gradient(135deg, var(--color-secondary-red) 0%, var(--color-accent-orange) 100%);
+  }
+  .bg-card-overlay {
+    background-image: linear-gradient(180deg, transparent 40%, rgba(11,58,102,0.92) 100%);
+  }
+  .text-gradient-yellow {
+    background: linear-gradient(135deg, var(--color-primary-yellow), var(--color-accent-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-red {
+    background: linear-gradient(135deg, var(--color-secondary-red), var(--color-accent-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ===== KEYFRAMES ===== */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-14px) rotate(2deg); }
+  66%       { transform: translateY(-7px) rotate(-1deg); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-20px); }
+}
+
+@keyframes float-x {
+  0%, 100% { transform: translate(0, 0); }
+  25%       { transform: translate(10px, -14px); }
+  75%       { transform: translate(-10px, -7px); }
+}
+
+@keyframes bounce-slow {
+  0%, 10%, 100% { transform: translateY(0); }
+  4%             { transform: translateY(-8px); }
+  7%             { transform: translateY(-4px); }
+}
+
+@keyframes shimmer-sweep {
+  0%   { left: -80%; }
+  100% { left: 150%; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes scale-in {
+  from { transform: scale(0.92); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes card-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,181,46,0); }
+  50%       { box-shadow: 0 0 20px 4px rgba(245,181,46,0.18); }
+}
+
+/* ===== ANIMATION CLASSES ===== */
+
+.animate-float       { animation: float 6s ease-in-out infinite; }
+.animate-float-slow  { animation: float-slow 8s ease-in-out infinite; }
+.animate-float-x     { animation: float-x 12s ease-in-out infinite; }
+.animate-bounce-slow { animation: bounce-slow 8s infinite ease-in-out; }
+.animate-marquee     { animation: marquee-scroll 28s linear infinite; }
+.animate-scale-in    { animation: scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.animate-slide-up    { animation: slide-up 0.5s ease forwards; }
+
+.animate-gradient-hero {
+  background: linear-gradient(-45deg, #0B3A66, #0E4A80, #103D6A, #0A2A50);
+  background-size: 400% 400%;
+  animation: gradient-shift 14s ease infinite;
+}
+
+/* ===== SHIMMER BUTTON ===== */
+
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -80%;
+  width: 55%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer-sweep 3.5s ease-in-out 0.8s infinite;
+}
+
+/* ===== NAV UNDERLINE ===== */
+
+.nav-link-item {
+  position: relative;
+}
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--color-primary-yellow);
+  border-radius: 9999px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-link-item:hover::after {
+  width: 100%;
+}
+.nav-link-item.active-link::after {
+  width: 100%;
+}
+
+/* ===== CARD GLOW ===== */
+
+.card-glow-hover {
+  transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.card-glow-hover:hover {
+  box-shadow: 0 16px 40px rgba(11, 58, 102, 0.14), 0 0 0 1px rgba(245,181,46,0.15);
+  transform: translateY(-5px);
+}
+
+/* ===== CARD PRODUCT ===== */
+.product-card-hover {
+  transition: box-shadow 0.3s ease, transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.product-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(245, 181, 46, 0.18), 0 4px 16px rgba(11, 58, 102, 0.1);
+}
