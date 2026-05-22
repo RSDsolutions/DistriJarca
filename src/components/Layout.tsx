@@ -17,26 +17,16 @@ const NAV_LINKS = [
 ];
 
 function Logo({ size = "md" }: { size?: "sm" | "md" }) {
-  const imgSize = size === "sm" ? "w-8 h-8" : "w-10 h-10";
-  const textSize = size === "sm" ? "text-xl" : "text-2xl";
+  const imgHeight = size === "sm" ? "h-10" : "h-12";
   return (
-    <Link to="/" className="flex items-center gap-3 group">
-      <motion.div
-        className="bg-white rounded-xl p-1.5 shadow-md"
-        whileHover={{ scale: 1.08, rotate: 4 }}
-        transition={{ type: "spring", stiffness: 320, damping: 18 }}
-      >
-        <img src={logoSrc} alt="Distri-Jarca" className={cn(imgSize, "object-contain")} />
-      </motion.div>
-      <div>
-        <div className={cn("flex font-nunito font-extrabold tracking-tighter", textSize)}>
-          <span className="text-[#F5B52E]">DISTRI-</span>
-          <span className="text-white">JARCA</span>
-        </div>
-        <div className="text-[#FF8A30] text-[9px] font-semibold uppercase tracking-[0.2em] -mt-0.5 font-sans">
-          Quesos &amp; Embutidos
-        </div>
-      </div>
+    <Link to="/" className="flex items-center group">
+      <motion.img
+        src={logoSrc}
+        alt="Distri-Jarca"
+        className={cn(imgHeight, "w-auto object-contain drop-shadow-md")}
+        whileHover={{ scale: 1.06 }}
+        transition={{ type: "spring", stiffness: 300, damping: 18 }}
+      />
     </Link>
   );
 }
